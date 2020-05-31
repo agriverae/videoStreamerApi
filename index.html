@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@0.8.2"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var playbackId = "1EJcWPQveaN78acomrPw5ZdH22xg7r567Vl77FBEIzM";
+        var url = "https://stream.mux.com/" + playbackId + ".m3u8";
+
+        // HLS.js-specific setup code
+        if (Hls.isSupported()) {
+          var video = document.getElementById("myVideo");
+          console.log(video);
+          var hls = new Hls();
+          hls.loadSource(url);
+          hls.attachMedia(video);
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <video id="myVideo" controls></video>
+  </body>
+</html>
