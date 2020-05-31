@@ -1,8 +1,7 @@
-const express = require("express");
 const Mux = require("@mux/mux-node");
 const path = require("path");
 require("dotenv").config();
-const app = express();
+const server = require("./src/ApolloServer/createServer");
 
 const { Video, Data } = new Mux(
   "e8852629-151d-4c7a-b283-f5c58e6d9773",
@@ -33,10 +32,6 @@ const checkStatus = async () => {
 
 //uploadVideo();
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
-
-app.listen(3000, function () {
-  console.log("Example app listening on port 3000!");
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
